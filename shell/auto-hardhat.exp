@@ -1,7 +1,7 @@
 #!/usr/bin/expect
 
 set timeout -1
-spawn yarn run hardhat init
+spawn yarn hardhat init
 
 expect {
     "What do you want to do?" {
