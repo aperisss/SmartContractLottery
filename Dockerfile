@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y expect jq git && \
     yarn init -y && yarn add --dev hardhat && \
     chmod +x shell/auto-hardhat.exp && expect shell/auto-hardhat.exp && \
     yarn add --dev @nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers ethers \
-    @nomiclabs/hardhat-etherscan @nomiclabs/hardhat-waffle chai ethereum-waffle \
+    @nomiclabs/hardhat-etherscan  \ 
+    @nomiclabs/hardhat-waffle chai ethereum-waffle \
     hardhat hardhat-contract-sizer hardhat-deploy hardhat-gas-reporter prettier \
     prettier-plugin-solidity solhint solidity-coverage dotenv @chainlink/contracts && \
     sh shell/apply_prettier.sh && rm -rf shell && \
