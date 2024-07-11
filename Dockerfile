@@ -19,8 +19,8 @@ RUN apt-get update && apt-get install -y expect jq git && \
     rm -rf /var/lib/apt/lists/* && apt-get clean && \
     rm contracts/Lock.sol && \
     git config --global user.name "aperisss" && \
-    git config --global user.email "peris.adam@outlook.fr"
-    # git stash --include-untracked && git checkout main && \
-    # git fetch origin && git reset --hard origin/main
+    git config --global user.email "peris.adam@outlook.fr" && \
+    git stash --include-untracked && git checkout main && \
+    git fetch origin && git reset --hard origin/main
 
 CMD ["bash"]
