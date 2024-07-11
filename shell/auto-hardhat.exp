@@ -1,0 +1,33 @@
+#!/usr/bin/expect
+
+set timeout -1
+spawn npx hardhat init
+
+expect {
+    "What do you want to do?" {
+        send -- "\r"
+        exp_continue
+    }
+    "Hardhat project root:" {
+        send -- "\r"
+        exp_continue
+    }
+    "Do you want to add a .gitignore?" {
+        send -- "\r"
+        exp_continue
+    }
+    "Help us improve Hardhat with anonymous crash reports & basic usage data?" {
+        send -- "\r"
+        exp_continue
+    }
+    "Do you want to install this sample project's dependencies with npm (@nomicfoundation/hardhat-toolbox)?" {
+        send -- "\r"
+        exp_continue
+    }
+    timeout {
+        puts "Timed out waiting for response."
+        exit 1
+    }
+}
+
+catch {wait}
