@@ -9,7 +9,7 @@ WORKDIR /app
 COPY . .
 
 RUN apt-get update && apt-get install -y expect jq git && \
-    npm init --yes && npm install --save-dev hardhat && \
+    yarn init -y && yarn add --dev hardhat && \
     chmod +x shell/auto-hardhat.exp && expect shell/auto-hardhat.exp && \
     yarn add --dev @nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers ethers \
     @nomiclabs/hardhat-etherscan @nomiclabs/hardhat-waffle chai ethereum-waffle \
