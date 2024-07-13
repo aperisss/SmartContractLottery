@@ -23,5 +23,6 @@ RUN apt-get update && apt-get install -y expect jq git && \
     git config --global user.email "peris.adam@outlook.fr"
     git stash --include-untracked && git checkout main && \
     git fetch origin && git reset --hard origin/main
+    # installer hardhat-shorthad 14:15
 
 CMD ["bash"]
