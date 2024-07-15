@@ -7,7 +7,7 @@ const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY
 
 module.exports = {
-  defaultNetwork = "hardhat",
+  defaultNetwork: "hardhat",
   networks: {
     hardhat: {
       chainId: 31337,
