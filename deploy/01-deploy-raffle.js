@@ -6,17 +6,16 @@ const VRF_SUB_FUND_AMOUNT = ethers.parseEther("2");
 
 module.exports = async function ({getNamedAccounts, deployments}) {
     const { deploy, log } = deployments
-    const { deployer } = getNamedAccounts()
+    const { deployer } = await getNamedAccounts()
     const chainId = network.config.chainId
     let vrfCoordinatorV2Address, subscriptionId
     if (developmentChains.includes(network.name)) {
-      const vrfCoordinatorV2Mock = await deployments.get("VRFCoordinatorV2Mock")
-      vrfCoordinatorV2Address = vrfCoordinatorV2Mock.address
-      log("------------------------------aaaa")
+     const vrfCoordinatorV2MockDeployment = await deployments.get("VRFCoordinatorV2Mock");
+     const vrfCoordinatorV2Mock = await ethers.getContractAt("VRFCoordinatorV2Mock", vrfCoordinatorV2MockDeployment.address);
+      vrfCoordinatorV2Address = vrfCoordinatorV2Mock.target
       const transactionResponse = await vrfCoordinatorV2Mock.createSubscription()
-      log("------------------------------bbbb")
       const transactionReceipt = await transactionResponse.wait(1);
-      subscriptionId = transactionReceipt.events[0].args.subId
+      subscriptionId = 1
       await vrfCoordinatorV2Mock.fundSubscription(subscriptionId, VRF_SUB_FUND_AMOUNT)
     } else {
          vrfCoordinatorV2Address = network.config[chainId]["vrfCoordinatorv2"]
@@ -26,18 +25,16 @@ module.exports = async function ({getNamedAccounts, deployments}) {
     const GasLane = networkConfig[chainId]["gasLane"]
     const callbackGasLimit = networkConfig[chainId]["callbackGasLimit"]
     const interval = networkConfig[chainId]["interval"]
-
     const args = [vrfCoordinatorV2Address, entranceFee, GasLane, subscriptionId, callbackGasLimit, interval]
      const raffle = await deploy("Raffle", {
         from: deployer,
-        args: [],
+        args: args,
         log: true,
         waitConfirmations: network.config.blockConfirmations || 1,
      })
-
      if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
-      log("Verifying0...")
-      await verify(raffle.adress, args)
+      log("Verifying...")
+      await verify(raffle.address, args)
      }
      log("----------------------------")
 }
