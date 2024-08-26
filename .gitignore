@@ -2,3 +2,4 @@ foundrylib
 broadcast
 cache
 out
+foundrylib/*
