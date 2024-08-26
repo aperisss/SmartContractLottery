@@ -1,4 +1,5 @@
 source /root/.bashrc
 foundryup
-cd foundry
+mkdir foundrylib
+cd foundrylib
 forge init 
