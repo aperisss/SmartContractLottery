@@ -9,6 +9,6 @@ RUN apt-get update && apt-get install -y git  && \
     git config --global user.email "peris.adam@outlook.fr" && \
     curl -L https://foundry.paradigm.xyz | bash && \
     chmod +x setup.sh && bash setup.sh && \
-    mkdir foundry && cd foundry && forge init 
+    cd foundry && forge init 
 
 CMD ["bash"]
