@@ -1,18 +1,7 @@
 source /root/.bashrc
 foundryup
-forge init foundrylib
-rm -rf foundrylib/script foundrylib/src foundrylib/test
+mkdir foundrylib
+cd foundrylib
+forge init 
+rm -rf script src test
 cd ..
-
-
-
-
-
-
-# source /root/.bashrc
-# foundryup
-# mkdir foundrylib
-# cd foundrylib
-# forge init 
-# rm -rf script src test
-# cd ..
