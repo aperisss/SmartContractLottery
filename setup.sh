@@ -1,3 +1,4 @@
+curl -L https://foundry.paradigm.xyz | bash 
 source /root/.bashrc
 foundryup
 mkdir foundrylib
