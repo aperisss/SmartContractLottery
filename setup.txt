@@ -1,6 +1,13 @@
 curl -L https://foundry.paradigm.xyz | bash 
 source /root/.bashrc
 foundryup
-mkdir foundrylib
-cd foundrylib
-forge init 
+mkdir foundry
+cd foundry
+forge init
+cd ..
+git clone https://github.com/matter-labs/foundry-zksync
+cd foundry-zksync
+./install-foundry-zksync
+source /root/.bashrc
+foundryup-zksync / foundryup 
+forge install github.com/smartcontractkit/chainlink-brownie-contracts
